@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.SRP.ExpenseTracker.dto.ExpenseDTO;
 import com.SRP.ExpenseTracker.entity.Expense;
-
 public interface ExpenseService {
 
 	Expense postExpense(ExpenseDTO expenseDTO);
@@ -16,4 +15,5 @@ public interface ExpenseService {
 	Expense getExpenseById(Long id);
 
 	void deleteExpense(Long id) ;
+
 }
