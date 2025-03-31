@@ -7,6 +7,7 @@ import lombok.*;
 @Data
 public class IncomeDTO {
 
+	//id
 	private Long id;
 	private String title;
 	private Integer amount;
