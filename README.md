@@ -194,6 +194,7 @@ spring.datasource.password=yourpass
 
 bash:
 mvn clean install
+
 mvn spring-boot:run
 
 
