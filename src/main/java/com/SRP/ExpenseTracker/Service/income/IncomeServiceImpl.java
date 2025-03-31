@@ -17,15 +17,13 @@ import jakarta.persistence.EntityNotFoundException;
 @Service
 @RequiredArgsConstructor
 public class IncomeServiceImpl implements IncomeService {
-	
-	private final IncomeRepository incomeRepository ;
 
+	private final IncomeRepository incomeRepository ;
 
 	public Income postIncome(IncomeDTO incomeDTO) {
 		return saveOrUpdateIncome(new Income(), incomeDTO);
-		
-	}
 
+	}
 
 	private Income saveOrUpdateIncome(Income income, IncomeDTO incomeDTO) {
 		income.setTitle(incomeDTO.getTitle());
@@ -37,17 +35,12 @@ public class IncomeServiceImpl implements IncomeService {
 		return incomeRepository.save(income);
 	}
 
-
-
-
-
-	
 	public List<IncomeDTO> getAllIncomes(){
 		return incomeRepository.findAll().stream()
 				.sorted(Comparator.comparing(Income::getDate)
 				.reversed()).map(Income::getIncomeDTO)
 				.collect(Collectors.toList());
-				
+
 	}
 
 	public Income updateIncome(Long id, IncomeDTO incomeDTO) {
@@ -69,7 +62,6 @@ public class IncomeServiceImpl implements IncomeService {
 		}
 	}
 
-
 	public IncomeDTO getIncomeById(Long id) {
 		Optional<Income> optionalIncome=incomeRepository.findById(id);
 		if(optionalIncome.isPresent()) {
@@ -79,8 +71,6 @@ public class IncomeServiceImpl implements IncomeService {
 		}
 	}
 
-
-
 	public void deleteIncome(Long id) {
 		Optional<Income> optionalIncome=incomeRepository.findById(id);
 		if(optionalIncome.isPresent()) {
@@ -88,8 +78,6 @@ public class IncomeServiceImpl implements IncomeService {
 		}else {
 			throw new EntityNotFoundException("Expense is not present with id"+id);
 		}
-			
 	}
+
 }
-
-
