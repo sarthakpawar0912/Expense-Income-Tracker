@@ -25,8 +25,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class IncomeController {
-	private final IncomeService incomeService ;
 
+	private final IncomeService incomeService ;
 
 	@PostMapping
 	public ResponseEntity<?> postIncome(@RequestBody IncomeDTO incomeDTO){
@@ -38,13 +38,10 @@ public class IncomeController {
 		}
 	}
 
-
 	@GetMapping("/all")
 	public ResponseEntity<?> getAllIncome(){
 		return ResponseEntity.ok(incomeService.getAllIncomes());
 	}
-
-
 
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateIncome(@PathVariable Long id, @RequestBody IncomeDTO incomeDTO) {
@@ -58,7 +55,6 @@ public class IncomeController {
 		}
 	}
 
-
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getIncomeById(@PathVariable Long id){
 		try {
@@ -69,7 +65,6 @@ public class IncomeController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("something went wrong");
 		}
 	}
-
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteIncome(@PathVariable Long id){
@@ -82,4 +77,5 @@ public class IncomeController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("something went wrong");
 		}
 	}
+
 }
