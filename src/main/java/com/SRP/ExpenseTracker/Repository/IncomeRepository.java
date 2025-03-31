@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.SRP.ExpenseTracker.entity.Income;
 import java.time.LocalDate;
 
-
 @Repository
 public interface IncomeRepository extends JpaRepository<Income, Long>{
 
@@ -21,4 +20,5 @@ public interface IncomeRepository extends JpaRepository<Income, Long>{
 	Double sumAllAmounts();
 
 	Optional<Income> findFirstByOrderByDateDesc();
+
 }
