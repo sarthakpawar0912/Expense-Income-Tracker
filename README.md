@@ -44,5 +44,15 @@ Content-Type: application/json
   "date": "2023-07-15"
 }
 
+✅ Success Response:
 
+json:
+{
+  "id": 42,
+  "amount": 125.50,
+  "description": "Weekly groceries",
+  "category": "Food",
+  "date": "2023-07-15",
+  "createdAt": "2023-07-15T14:30:22Z"
+}
 
