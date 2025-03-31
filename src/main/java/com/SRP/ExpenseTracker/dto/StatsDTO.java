@@ -17,4 +17,5 @@ public class StatsDTO {
 	private Double maxIncome;
 	private Double minExpense;
 	private Double maxExpense;
+
 }
