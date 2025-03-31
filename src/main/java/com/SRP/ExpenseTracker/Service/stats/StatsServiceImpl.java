@@ -21,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class StatsServiceImpl implements StatsService {
 
 	private final IncomeRepository incomeRepository;
+
 	private final ExpenseRepository expenseRepository;
 
 	@Override
@@ -67,4 +68,5 @@ public class StatsServiceImpl implements StatsService {
 
 		return statsDTO;
 	}
+
 }
