@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.SRP.ExpenseTracker.entity.Expense;
 import com.SRP.ExpenseTracker.entity.Income;
 import lombok.Data;
+
 @Data
 @ResponseBody
 public class GraphDTO {
+
 	private List<Expense> expenseList;
 	private List<Income> incomeList;
 
@@ -20,4 +22,5 @@ public class GraphDTO {
 	public void setIncomeList(List<Income> incomeList) {
 		this.incomeList = incomeList;
 	}
+
 }
