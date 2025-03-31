@@ -33,13 +33,17 @@ A complete RESTful API for personal finance management built with **Spring Boot*
 📚 API Documentation
 A complete guide to managing your finances programmatically
 
+
+
 💸 Expense Management
 Track every penny spent with smart categorization
 
 ➕ Add New Expense
 
+
 📍 Endpoint: POST /api/expense/
 📦 Request Body: Send amount, description, category, and date.
+
 
 json:
 {
@@ -52,11 +56,22 @@ json:
 ✅ Success Response: Returns the saved expense with a unique ID and timestamp.
 ❌ Errors: Handles invalid amounts, future dates, or missing fields.
 
+
+
 🔍 Retrieve Expenses
 📂 Get All Expenses: GET /api/expense/all
 Supports pagination (?page=1&size=10).
+
+
+
 🔎 Get One Expense: GET /api/expense/{id}
 Fetches details for a specific transaction.
+
+
+
+
+
+
 
 
 ✏️ Update/Delete
@@ -65,8 +80,16 @@ Fetches details for a specific transaction.
 
 
 
+
+
+
+
+
+
+
 💰 Income Tracking
 Monitor earnings with detailed records
+
 
 ➕ Add Income
 📍 Endpoint: POST /api/income
@@ -81,35 +104,76 @@ json:
 ✅ Success Response: Includes auto-generated ID and creation timestamp.
 
 
+
+
+
+
 📊 View Income
 📂 List All Income: GET /api/income/all
 🔎 Single Record: GET /api/income/{id}
+
+
+
+
 
 ✏️ Update/Delete
 🔄 Edit: PUT /api/income/{id}
 🗑️ Remove: DELETE /api/income/{id}
 
 
+
+
+
+
+
 📈 Financial Analytics
 Gain insights with powerful statistics
 
+
+
+
+
 📊 Summary Dashboard
 📍 Endpoint: GET /api/stats
+
+
+
+
 
 📊 Response:
 total income/expenses
 Current balance
 Top spending categories
 
+
+
+
+
 📉 Visual Chart Data
 📍 Endpoint: GET /api/stats/chart
+
+
+
+
+
 
 📈 Response:
 Monthly trends (income vs. expenses)
 Labels for time periods (e.g., ["Jan", "Feb", "Mar"])
 
+
+
+
+
+
 🛠️ Setup & Usage
 Get started in 3 easy steps
+
+
+
+
+
+
 
 ⚙️ Configure
 Set up MySQL in application.properties.
@@ -119,6 +183,13 @@ spring.datasource.url=jdbc:mysql://localhost:3306/finance_db
 spring.datasource.username=youruser
 spring.datasource.password=yourpass
 
+
+
+
+
+
+
+
 🚀 Run the API
 
 bash:
@@ -126,11 +197,29 @@ mvn clean install
 mvn spring-boot:run
 
 
+
+
+
+
+
+
+
 🔗 Test Endpoints
 
 Use tools like Postman or cURL:
 bash:
 curl -X POST http://localhost:8080/api/expense/ -H "Content-Type: application/json" -d '{"amount":50.00, "category":"Transport"}'
+
+
+
+
+
+
+
+
+
+
+
 
 🚨 Error Handling
 Clear feedback for issues
@@ -146,10 +235,30 @@ json:
 }
 
 
+
+
+
+
+
+
+
+
+
 🌟 Why Use This API?
 ✅ Simple: Intuitive endpoints.
 📊 Insightful: Built-in analytics.
 🔒 Reliable: Handles errors gracefully.
+
+
+
+
+
+
+
+
+
+
+
 
 
 🎉 Ready to take control of your finances? Start integrating today!
