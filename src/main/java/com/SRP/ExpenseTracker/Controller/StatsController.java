@@ -11,6 +11,7 @@ import com.SRP.ExpenseTracker.Service.stats.StatsService;
 import com.SRP.ExpenseTracker.dto.GraphDTO;
 
 import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/stats")
 @RequiredArgsConstructor
@@ -28,4 +29,5 @@ public class StatsController {
     public ResponseEntity<?> getStats() {
         return ResponseEntity.ok(statsService.getStats());
     }
+
 }
