@@ -64,9 +64,7 @@ Success Response:{
   "createdAt": "2023-07-15T14:30:22Z"
 }
 
-
-
-###Other Expense Operations:
+Other Expense Operations:
 Endpoint          	Method	      Description          	     Parameters
 /api/expense/all	    GET	         Get all expenses	          ?page=1&size=10
 /api/expense/{id} 	 GET	         Get specific expense	       Path: id
@@ -75,7 +73,7 @@ Endpoint          	Method	      Description          	     Parameters
 
 
 
-###💰 Income Endpoints
+##💰 Income Endpoints
 Create New Income
 http:
 POST /api/income
