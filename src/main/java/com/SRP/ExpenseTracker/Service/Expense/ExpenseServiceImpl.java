@@ -25,7 +25,6 @@ public class ExpenseServiceImpl  implements ExpenseService{
 		return saveOrUpdateExpense(new Expense(),expenseDTO);
 	}
 
-
 	private Expense saveOrUpdateExpense(Expense expense,ExpenseDTO expenseDTO) {
 		 expense.setTitle(expenseDTO.getTitle());
 		 expense.setDate(expenseDTO.getDate());
@@ -34,7 +33,6 @@ public class ExpenseServiceImpl  implements ExpenseService{
 		 expense.setDescription(expenseDTO.getDescription());
 		 return expenseRepository.save(expense);
 	}
-
 
 	public Expense updateExpense(Long id,ExpenseDTO expenseDTO) {
 		Optional<Expense> optionalExpense= expenseRepository.findById(id);
@@ -45,14 +43,11 @@ public class ExpenseServiceImpl  implements ExpenseService{
 		}
 	}
 
-
-
 	public List<Expense> getAllExpenses() {
 		return expenseRepository.findAll()
 				.stream().sorted(Comparator.comparing(Expense::getDate)
 				.reversed()).collect(Collectors.toList());
 	}
-
 
 	public Expense getExpenseById(Long id) {
 		Optional<Expense> optionalExpense= expenseRepository.findById(id);
@@ -64,7 +59,6 @@ public class ExpenseServiceImpl  implements ExpenseService{
 		}
 	}
 
-
 	public void deleteExpense(Long id) {
 		Optional<Expense> optionalExpense= expenseRepository.findById(id);
 		if(optionalExpense.isPresent()) {
@@ -73,6 +67,5 @@ public class ExpenseServiceImpl  implements ExpenseService{
 			throw new EntityNotFoundException("Expense is not present with id"+id);
 		}
 	}
-
 
 }
