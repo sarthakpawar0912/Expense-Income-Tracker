@@ -19,8 +19,6 @@ import com.SRP.ExpenseTracker.entity.Expense;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-
-
 @RestController
 @RequestMapping("/api/expense")
 @RequiredArgsConstructor
@@ -43,19 +41,10 @@ public class ExpenseController {
 		}
 	}
 
-
-
-
-
 	@GetMapping("/all")
 	public ResponseEntity<?> getAllExpenses(){
 		return ResponseEntity.ok(expenseService.getAllExpenses());
 	}
-
-
-
-
-
 
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getExpenseById(@PathVariable Long id){
@@ -67,9 +56,6 @@ public class ExpenseController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("something went wrong");
 		}
 	}
-
-
-
 
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateExpense(@PathVariable Long id, @RequestBody(required = false) ExpenseDTO dto) {
@@ -87,9 +73,6 @@ public class ExpenseController {
 		}
 	}
 
-
-
-
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteExpense(@PathVariable Long id){
 		try {
@@ -101,4 +84,5 @@ public class ExpenseController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("something went wrong");
 		}
 	}
+
 }
