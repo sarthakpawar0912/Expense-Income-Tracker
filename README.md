@@ -47,10 +47,26 @@ A robust RESTful API built with Spring Boot for tracking personal finances, incl
 ```http
 POST /api/expense/
 Content-Type: application/json
-
 {
   "amount": 125.50,
   "description": "Weekly groceries",
   "category": "Food",
   "date": "2023-07-15"
 }
+
+
+Success Response:{
+  "id": 42,
+  "amount": 125.50,
+  "description": "Weekly groceries",
+  "category": "Food",
+  "date": "2023-07-15",
+  "createdAt": "2023-07-15T14:30:22Z"
+}
+
+Other Expense Operations:
+Endpoint          	Method	      Description          	  Parameters
+/api/expense/all	   GET	       Get all expenses	          ?page=1&size=10
+/api/expense/{id} 	GET	       Get specific expense	    Path: id
+/api/expense/{id}	   PUT          Update expense	          Body: ExpenseDTO
+/api/expense/{id}	   DELETE	    Delete expense	          Path: id
