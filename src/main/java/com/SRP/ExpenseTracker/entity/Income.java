@@ -13,6 +13,7 @@ import lombok.*;
 @Entity
 @Data
 public class Income {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -22,10 +23,8 @@ public class Income {
 	private String category;
 	private String description;
 
-
 	public IncomeDTO getIncomeDTO() {
 		IncomeDTO incomeDTO = new IncomeDTO();
-
 		incomeDTO.setId(id);
 		incomeDTO.setTitle(title);
 		incomeDTO.setAmount(amount);
@@ -33,7 +32,6 @@ public class Income {
 		incomeDTO.setDescription(description);
 		incomeDTO.setCategory(category);
 		return incomeDTO;
-
 	}
 
 }
