@@ -1,5 +1,4 @@
 package com.SRP.ExpenseTracker.Repository;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -19,4 +18,5 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 	Double sumAllAmounts();
 
 	Optional<Expense> findFirstByOrderByDateDesc();
+
 }
