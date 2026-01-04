@@ -27,7 +27,7 @@ public class StatsServiceImpl implements StatsService {
 	@Override
 	public GraphDTO getChartData() {
 		LocalDate endDate = LocalDate.now();
-		LocalDate startDate = endDate.minusDays(27);
+		LocalDate startDate = endDate.minusDays(180);
 		GraphDTO graphDTO = new GraphDTO();
 		graphDTO.setExpenseList(expenseRepository.findByDateBetween(startDate, endDate));
 		graphDTO.setIncomeList(incomeRepository.findByDateBetween(startDate, endDate));

@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.SRP.ExpenseTracker.Repository.ExpenseRepository;
 import com.SRP.ExpenseTracker.dto.ExpenseDTO;
+import com.SRP.ExpenseTracker.dto.PagedResponseDTO;
 import com.SRP.ExpenseTracker.entity.Expense;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -47,6 +50,22 @@ public class ExpenseServiceImpl  implements ExpenseService{
 		return expenseRepository.findAll()
 				.stream().sorted(Comparator.comparing(Expense::getDate)
 				.reversed()).collect(Collectors.toList());
+	}
+
+	public PagedResponseDTO<Expense> getAllExpensesPaginated(int page, int size) {
+		Pageable pageable = PageRequest.of(page, size);
+		Page<Expense> expensePage = expenseRepository.findAllByOrderByDateDesc(pageable);
+
+		PagedResponseDTO<Expense> response = new PagedResponseDTO<>();
+		response.setContent(expensePage.getContent());
+		response.setPageNumber(expensePage.getNumber());
+		response.setPageSize(expensePage.getSize());
+		response.setTotalElements(expensePage.getTotalElements());
+		response.setTotalPages(expensePage.getTotalPages());
+		response.setLast(expensePage.isLast());
+		response.setFirst(expensePage.isFirst());
+
+		return response;
 	}
 
 	public Expense getExpenseById(Long id) {

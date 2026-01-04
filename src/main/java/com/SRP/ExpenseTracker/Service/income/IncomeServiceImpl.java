@@ -6,10 +6,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.SRP.ExpenseTracker.Repository.IncomeRepository;
 import com.SRP.ExpenseTracker.dto.IncomeDTO;
+import com.SRP.ExpenseTracker.dto.PagedResponseDTO;
 import com.SRP.ExpenseTracker.entity.Income;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -41,6 +44,26 @@ public class IncomeServiceImpl implements IncomeService {
 				.reversed()).map(Income::getIncomeDTO)
 				.collect(Collectors.toList());
 
+	}
+
+	public PagedResponseDTO<IncomeDTO> getAllIncomesPaginated(int page, int size) {
+		Pageable pageable = PageRequest.of(page, size);
+		Page<Income> incomePage = incomeRepository.findAllByOrderByDateDesc(pageable);
+
+		List<IncomeDTO> incomeDTOs = incomePage.getContent().stream()
+				.map(Income::getIncomeDTO)
+				.collect(Collectors.toList());
+
+		PagedResponseDTO<IncomeDTO> response = new PagedResponseDTO<>();
+		response.setContent(incomeDTOs);
+		response.setPageNumber(incomePage.getNumber());
+		response.setPageSize(incomePage.getSize());
+		response.setTotalElements(incomePage.getTotalElements());
+		response.setTotalPages(incomePage.getTotalPages());
+		response.setLast(incomePage.isLast());
+		response.setFirst(incomePage.isFirst());
+
+		return response;
 	}
 
 	public Income updateIncome(Long id, IncomeDTO incomeDTO) {

@@ -1,6 +1,5 @@
 package com.SRP.ExpenseTracker.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,10 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.SRP.ExpenseTracker.Service.Expense.ExpenseService;
 import com.SRP.ExpenseTracker.dto.ExpenseDTO;
+import com.SRP.ExpenseTracker.dto.PagedResponseDTO;
 import com.SRP.ExpenseTracker.entity.Expense;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -27,7 +28,7 @@ public class ExpenseController {
 
 	private final ExpenseService expenseService;
 
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<?> postExpense(@RequestBody ExpenseDTO dto) {
 		try {
 			Expense createdExpense = expenseService.postExpense(dto);
@@ -42,8 +43,11 @@ public class ExpenseController {
 	}
 
 	@GetMapping("/all")
-	public ResponseEntity<?> getAllExpenses(){
-		return ResponseEntity.ok(expenseService.getAllExpenses());
+	public ResponseEntity<?> getAllExpenses(
+			@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size){
+		PagedResponseDTO<Expense> response = expenseService.getAllExpensesPaginated(page, size);
+		return ResponseEntity.ok(response);
 	}
 
 	@GetMapping("/{id}")
